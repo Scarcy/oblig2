@@ -1,0 +1,44 @@
+@startuml Strømmetjeneste
+left to right direction
+skinparam actorStyle awesome
+
+:Bruker: as bruker
+usecase "Filtrere medie etter kategori" as filter
+usecase "Søke etter medie" as AC2
+usecase "Strømme medie" as medie
+usecase "Legge til medie i spilleliste" as AC3
+usecase "Logge inn" as login
+usecase "Mediekontroll" as AC4
+usecase "Hoppe over intro" as intro
+usecase "Velge Undertekster" as subtitle
+usecase "Lagre for offline visning" as offline
+bruker --> medie
+bruker --> AC2
+bruker --> AC3
+bruker -> login
+bruker --> offline
+bruker --> filter
+medie -down-> AC4
+medie -down-> intro
+medie -down-> subtitle
+note bottom of AC4 : Pause, Spill av, Volume opp og ned
+
+:Administrator: as admin
+usecase "Administrere innhold" as innhold
+usecase "Laste opp mediefiler" as upload
+usecase "Slette mediefiler" as delete
+usecase "Laste opp undertekster" as uptext
+innhold -down-> upload
+innhold -down-> delete
+innhold -down-> uptext
+
+usecase "Opprette kategorier" as category
+usecase "Slette kategorier" as delcat
+category --> delcat
+admin -left-> login
+
+usecase "Oppdatere tjenesten" as update
+admin --> innhold
+admin --> category
+admin --> update
+@enduml

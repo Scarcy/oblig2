@@ -1,0 +1,27 @@
+@startuml Sekvensdiagram
+' Oppgave: 
+' Lag et sekvensdiagram som viser hvordan flyten 
+' mellom hvert lag i systemet kan være når en bruker ønsker å betale 
+' for innhold på en slik tjeneste. Anta at kunden betaler med et 
+' kredittkort. Bruk verb eller metodenavn som tekst over hver pil.
+
+' Hoved ting som bruker,server og 3. parts betalingstjenester
+title Sekvensdiagram
+actor Bruker                   as bruker
+participant Strømmetjeneste    as stream
+database Server                as server
+participant Betalingstjeneste  as 3rd
+
+' Handlinger
+bruker -> stream  : Bestiller
+stream -> server  : Autentiser bestilling
+ Bestilling godkjent
+    server -> 3rd     : Verifiser kortinformasjon
+    3rd --> server    : Godkjenn betaling
+    server --> stream : Godkjent
+    stream -> bruker : Gi tilgang
+else Bestilling ikke godkjent
+    3rd --> server    : Feil kortinformasjon
+    server --> bruker : Gi feilmelding
+end
+@enduml
