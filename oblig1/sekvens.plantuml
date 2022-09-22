@@ -17,16 +17,15 @@ bruker -> stream      : Kjøper abonnement
 stream -> server      : authenticateOrder()
 alt Riktig kortinformasjon
     server -> 3rd     : verifyCardInfo()
-    3rd -> server     : Kort akseptert
+    3rd -> server     : cardAccepted()
     server -> stream  : updateUserPermissions()
     stream --> bruker : Gi tilgangsmelding 
 else Feil kortinformasjon
-    3rd --> server    : cardNotFound()
+    3rd -> server    : cardNotFound()
     server --> bruker : Gi feilmeldings detaljer
 else Betalingstjeneste sperret bestilling
     'server -> 3rd     : verifyCardInfo()
     3rd --> server    : Noe gikk galt
-    server --> stream : 
-    stream --> bruker  : Gi feilmeldings detaljer
+    server --> bruker : Gi feilmeldings detaljer 
 end
 @enduml
