@@ -6,7 +6,7 @@
 ' kredittkort. Bruk verb eller metodenavn som tekst over hver pil.
 
 ' Hoved ting som bruker,server og 3. parts betalingstjenester
-title Sekvensdiagram
+title Sekvensdiagram for Abonnementbestilling
 actor Bruker                   as bruker
 participant Strømmetjeneste    as stream
 database Server                as server
