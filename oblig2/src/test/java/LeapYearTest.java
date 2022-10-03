@@ -1,19 +1,21 @@
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 public class LeapYearTest {
     private final LeapYear leap = new LeapYear();
-    private final int[] leap_years = {2020,2024,2028,2032,2036,2040, 1884, 1892};
+    private static final int[] leap_years = {2021, 2024, 2028, 2032, 2036, 2040, 1884, 1892};
+
     @Test
-    public void testLeapYear(){
-        Assertions.assertTrue(leap.isLeapYear(2020));
-        Assertions.assertTrue(leap.isLeapYear(2024));
-        Assertions.assertTrue(leap.isLeapYear(2028));
-        Assertions.assertTrue(leap.isLeapYear(2032));
-        Assertions.assertTrue(leap.isLeapYear(2036));
-        Assertions.assertTrue(leap.isLeapYear(2040));
-        Assertions.assertTrue(leap.isLeapYear(1884));
-        Assertions.assertTrue(leap.isLeapYear(1892));
+    public void testLeapYear(TestInfo testInfo) throws AssertionError {
+        for (int i : leap_years) {
+            try {
+                Assertions.assertTrue(leap.isLeapYear(i));
+            } catch (AssertionError e) {
+                System.out.println(e.getMessage());
+                throw new AssertionError(i);
+            }
+            System.out.println(i);
+        }
+
 
     }
 
