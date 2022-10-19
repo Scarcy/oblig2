@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="oblig2" />
+        <module name="oblig" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="oblig" target="1.8" />
+      <module name="oblig2" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
